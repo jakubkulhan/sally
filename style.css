@@ -1,0 +1,33 @@
+ul li {
+    color: red;
+}
+ul li+li {
+    color: green;
+}
+ul li+li+li {
+    color: aqua;
+}
+
+ul li+li+li+li {
+    color: deepskyblue;
+}
+
+ul li:hover {
+    color: blue;
+    background: yellow;
+}
+
+ul li+li+li+li:hover {
+    color: pink;
+}
+ul li+li+li+li+li:hover {
+    color: blue;
+}
+
+li[lang=en] {
+    letter-spacing: 20px;
+}
+
+li[lang=en]:hover {
+    letter-spacing: 50px;
+}

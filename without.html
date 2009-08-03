@@ -1,8 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
     <head>
-        <title>sally</title>
+        <title>Sally</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
+        <script type="text/javascript">
+        <!--
+        var prependLi = function () {
+            var ul = Sizzle("ul")[0];
+            var li = document.createElement("li");
+            li.innerHTML = "prepended";
+            ul.insertBefore(li, ul.getElementsByTagName("li")[0]);
+        };
+
+        var appendLi = function () {
+            var ul = Sizzle("ul")[0];
+            var li = document.createElement("li");
+            li.innerHTML = "appended";
+            ul.appendChild(li);
+        };
+
+        sally.need_updates = true;
+        //-->
+        </script>
     </head>
     <body>
         <ul>
@@ -15,6 +34,9 @@
             <li>text</li>
             <li lang="en">text</li>
         </ul>
-        <p><a href="index.html">with sally</a></p>
+        <p><button onclick="prependLi();">Prepend &lt;li&gt;</button></p>
+        <p><button onclick="appendLi();">Append &lt;li&gt;</button></p>
+        <p><a href="index.html">with Sally</a></p>
+        <p><a href="not_updated.html">not updated</a></p>
     </body>
 </html>

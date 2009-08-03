@@ -1276,6 +1276,7 @@ window.Sizzle = Sizzle;
     };
 
     sally.registeredEvents = [];
+    sally.interactive = false;
 
     sally.initInteractive = function () {
         var that = this;
@@ -1298,10 +1299,12 @@ window.Sizzle = Sizzle;
 
                     function over() {
                         el.className += " hover";
+                        that.interactive = true;
                         that.updateInteractive();
                     }
 
                     function out() {
+                        that.interactive = false;
                         that.updateInteractive(true);
                         el.className = el.className.replace(/\s*hover\s*/, "");
                     }
@@ -1434,6 +1437,22 @@ window.Sizzle = Sizzle;
     if (BrowserDetect.browser === "Explorer" && BrowserDetect.version == 6) {
         window.attachEvent("onload", function () { 
             sally.init();
+
+            if (window.sally.need_updates) {
+                (function (previousHTML) {
+                    return function () {
+                        if (document.body.innerHTML !== previousHTML) {
+                            if (!sally.interactive) {
+                                sally.update();
+                                sally.initInteractive();
+                                previousHTML = document.body.innerHTML;
+                            }
+                        }
+
+                        setTimeout(arguments.callee, 33); 
+                    };
+                })(document.body.innerHTML)();
+            }
         });
 
         window.attachEvent("onunload", function () {
